@@ -1,0 +1,12 @@
+.upload-label {
+    background-color: #60b8f3;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px #60b8f3;
+  }
+  
+.upload-table {
+    border-spacing: 30px;
+  }
