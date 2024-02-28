@@ -17,7 +17,7 @@ const PropertyCard = ({card}) => {
     //   navigate("property")}}
     //onClick={()=>navigate(`../properties/${card.id.toString()}`)}
     
-    onClick={()=>navigate(`${card.id.toString()}`)}
+    onClick={()=>navigate(`../properties/${card.id.toString()}`)}
 
     >
       <Heart id={card?.id}/>

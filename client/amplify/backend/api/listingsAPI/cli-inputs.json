@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/listings": {
+      "name": "/listings",
+      "lambdaFunction": "listingsLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/listing/{id}": {
+      "name": "/listing/{id}",
+      "lambdaFunction": "listingLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

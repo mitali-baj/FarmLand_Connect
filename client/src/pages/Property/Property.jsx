@@ -47,10 +47,23 @@ const Property = () => {
   // const { data, isLoading, isError } = useQuery(["resd", id], () =>
   //   getProperty(id)
   // );
-  const { data, isLoading, isError } = getProperty(id);
+  // const  [item, setItem]  = useState();
+  // useEffect(() => {
+  // setItem(getProperty(id));
   
-  console.log('coordinates:',data);
-  //const { isLoading, isError } = useState();
+  // }, []);
+  const [item, setItem] = useState(null);
+
+useEffect(() => {
+  async function fetchData() {
+    const data = await getProperty(id);
+    setItem(data);
+  }
+
+  fetchData();
+}, [id]);
+  console.log('coordinates:',item);
+  const { isLoading, isError } = useState();
   const [modalOpened, setModalOpened] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
@@ -87,11 +100,11 @@ const Property = () => {
   };
   // const [item, setItem] = useState();
   // useEffect(() => {
-  //   fetch('https://tr2v9am23h.execute-api.ap-south-1.amazonaws.com/dev/listings')
+  //   fetch('https://ak8n1qfyf9.execute-api.ap-south-1.amazonaws.com/dev/listings')
   //       .then((res) => res.json())
   //       .then((data1) => {
 
-  //         setItem(data1.find((item) => item.id === 0.47111976065067496));
+  //         setItem(data1.find((item) => item.id === 0.11320770670590363));
           
   //       })
   //       .catch((err) => {
@@ -106,7 +119,7 @@ const Property = () => {
   //   }
   // }, [data]);
 
-//console.log(item);
+console.log('item',item);
   const tabsContent = [
     {
       label: "Overview",

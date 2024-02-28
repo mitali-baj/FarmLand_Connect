@@ -1,0 +1,92 @@
+{
+  "api": {
+    "listingsAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "listingsLambda"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "listingLambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "listingLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "listingsLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "listingsDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_listingLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listingLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_listingLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listingLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_listingsLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listingsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_listingsLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listingsLambda"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "listingsDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
 export const api = axios.create({
-  baseURL: "https://tr2v9am23h.execute-api.ap-south-1.amazonaws.com/dev",
+  baseURL: "https://ak8n1qfyf9.execute-api.ap-south-1.amazonaws.com/dev",
 });
 
 export const getAllProperties = async () => {
@@ -32,8 +32,8 @@ export const getProperty = async (id) => {
     if (response.status === 400 || response.status === 500) {
       throw response.data;
     }
-    console.log(response.data);
-    return response.data;
+    console.log(response.data[0]);
+    return response.data[0];
   } catch (error) {
     toast.error("Something went wrong");
     throw error;

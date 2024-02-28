@@ -7,7 +7,7 @@ import PropertyCard from "../../components/PropertyCard/PropertyCard";
 const Properties = () => {
   const [item, setItem] = useState();
   useEffect(() => {
-    fetch('https://tr2v9am23h.execute-api.ap-south-1.amazonaws.com/dev/listings')
+    fetch('https://ak8n1qfyf9.execute-api.ap-south-1.amazonaws.com/dev/listings')
         .then((res) => res.json())
         .then((data1) => {
 

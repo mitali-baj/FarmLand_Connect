@@ -28,7 +28,7 @@ const Facilities = ({
       }));
       propertyDetails.id = Math.random();
       //console.log(propertyDetails);
-      fetch('https://tr2v9am23h.execute-api.ap-south-1.amazonaws.com/dev/listings', {
+      fetch('https://ak8n1qfyf9.execute-api.ap-south-1.amazonaws.com/dev/listings', {
          method: 'POST',
          body: JSON.stringify(propertyDetails),
          headers: {
