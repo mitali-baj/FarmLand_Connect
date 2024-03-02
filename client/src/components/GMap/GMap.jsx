@@ -158,7 +158,7 @@ console.log(arrLatLngs);
       <div style={{ position: "relative", width: "120%", height: "100vh", overflow: "hidden", marginTop: "20px" }}>
     <Map
       google={google}
-      zoom={20}
+      zoom={15}
       initialCenter={{
         lat: lat1,
         lng: lng1

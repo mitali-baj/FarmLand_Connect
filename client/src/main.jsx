@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
   <PersistGate loading={null} persistor = {Persistor}>
   <React.StrictMode>
-    <Auth0Provider
+    {/* <Auth0Provider
      domain="dev-unwib2uznmp1ymj4.us.auth0.com"
      clientId="nxnI7UmTSQ0f8V5ZuoFxMwdot43ryb45"
      authorizationParams={{
@@ -33,10 +33,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     >
      
   
-      <App />
       
       
-    </Auth0Provider>
+      
+    </Auth0Provider> */}
+    <App />
   </React.StrictMode>
   </PersistGate>
   </Provider>

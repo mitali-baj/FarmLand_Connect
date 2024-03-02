@@ -29,7 +29,7 @@ const PropertyMap = ({ coordinates }) => {
   return (
     <Map
       google={google}
-      zoom={20}
+      zoom={15}
       initialCenter={{
         lat: coordinates[0]?.Lat || 0,
         lng: coordinates[0]?.Lng || 0

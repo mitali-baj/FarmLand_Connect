@@ -6,11 +6,12 @@ const useAuthCheck = () => {
 
     const {isAuthenticated} = useAuth0()
     const validateLogin = () => {
-        if(!isAuthenticated)
-        {
-            toast.error("you must be logged in", {position: "bottom-right"})
-            return false
-        } else return true
+        // if(!isAuthenticated)
+        // {
+        //     toast.error("you must be logged in", {position: "bottom-right"})
+        //     return false
+        // } else return true
+        return true
     }
   return (
     {
