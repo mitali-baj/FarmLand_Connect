@@ -142,7 +142,8 @@ console.log('item',item);
       label: "Overview",
       content: (
         <div>
-          <div className="overview-table" style="overflow-x:auto;">
+          <div className="overview-table">
+          <div style={{ overflowX: "auto", width: "100%" }}>
             <table style={{ borderCollapse: "collapse", borderSpacing: "0", width: "140%" }}>
 
               <thead>
@@ -185,7 +186,7 @@ console.log('item',item);
               <thead>
                 <tr>
                 <th style={{ width: "10%" }}>Nearby Locations</th>
-                  <th style={{ width: "10%" }}>Area</th>
+                  <th style={{ width: "10%" }}>Area (in acres)</th>
                   <th style={{ width: "10%" }}>Price</th>
                   <th style={{ width: "10%" }}>Crops</th>
                   <th style={{ width: "10%" }}>Irrigation</th>
@@ -201,6 +202,7 @@ console.log('item',item);
                 </tr>
               </tbody>
             </table>
+            </div>
             <style jsx>{`
               .overview-table {
                 width: 100%;
