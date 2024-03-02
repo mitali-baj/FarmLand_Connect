@@ -142,7 +142,7 @@ console.log('item',item);
       label: "Overview",
       content: (
         <div>
-          <div className="overview-table">
+          <div className="overview-table" style="overflow-x:auto;">
             <table style={{ borderCollapse: "collapse", borderSpacing: "0", width: "140%" }}>
 
               <thead>
