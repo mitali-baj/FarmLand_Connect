@@ -51,13 +51,13 @@ const Header = () => {
             <NavLink to="/ChatBot">LegalAId</NavLink>
 
             {/* login button */}
-            {/* {!isAuthenticated ? (
+            {!isAuthenticated ? (
               <button className="button" onClick={loginWithRedirect}>
                 Login
               </button>
             ) : (
               <ProfileMenu user={user} logout={logout} />
-            )} */}
+            )}
 
           </div>
 
