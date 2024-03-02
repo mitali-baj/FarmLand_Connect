@@ -12,6 +12,7 @@ const Properties = () => {
         .then((data1) => {
 
           setItem(data1);
+          console.log("--------",data1);
           
         })
         .catch((err) => {

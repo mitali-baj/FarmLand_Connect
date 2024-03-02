@@ -26,14 +26,17 @@ const Residencies = () => {
   // }, []);
   //console.log('this is data1', item);
   const [item, setItem] = useState([]);
-
+  useEffect(() => {
   async function fetchData() {
+    console.log('*************************');
     const data = await getAllProperties();
-    //console.log('dataaaaa',data);
+   
     setItem(data);
   }
-
   fetchData();
+
+}, []);
+
   const { isLoading, isError } = useState();
 
   //const {data, isError, isLoading} = useProperties()

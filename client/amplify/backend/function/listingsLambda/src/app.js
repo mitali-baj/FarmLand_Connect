@@ -17,6 +17,7 @@ const express = require('express')
 const ddbClient = new DynamoDBClient({ region: process.env.TABLE_REGION });
 const ddbDocClient = DynamoDBDocumentClient.from(ddbClient);
 
+
 let tableName = "listingsTable";
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
@@ -60,20 +61,37 @@ app.get('/listing/:id', async function(req, res) {
   // Add your code here
   console.log("Inside listing/{id}");
   console.log(req.params);
-  const id = req.params.id;
+  const id = parseFloat(req.params.id);
   console.log(id);
-  var params = {
+  // var params = {
+  //   TableName: tableName,
+  //   Select: 'ALL_ATTRIBUTES',
+  //   Key: {
+  //     id: id
+  //   }, 
+  // };
+  
+  const params = new GetCommand({
     TableName: tableName,
-    Select: 'ALL_ATTRIBUTES',
     Key: {
       id: id,
-    }, 
-  };
-  try {
-    ddbDocClient.send(new ScanCommand(params)).then (data =>{
-      res.json(data.Items);
-    });
-   
+    },
+  });
+  console.log("&&&&& ",params);
+   try {
+     
+  //   const command = new GetCommand({
+  //   TableName: tableName,
+  //   Key: {
+  //     id: id,
+  //   },
+  // });
+  //   const response = await ddbDocClient.send(command);
+  //   console.log("##### ",response);
+  //   return response;
+    const data = await ddbDocClient.send(params);
+    console.log("*****", data);
+    res.json(data);
   } catch (err) {
     res.statusCode = 500;
     res.json({error: 'Could not load items: ' + err.message});

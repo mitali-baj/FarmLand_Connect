@@ -15,9 +15,10 @@ export const getAllProperties = async () => {
     if (response.status === 400 || response.status === 500) {
       throw response.data;
     }
+    console.log(response.data);
     return response.data;
   } catch (error) {
-    toast.error("Something went wrong");
+    toast.error("Something went wrong in getting all properties");
     throw error;
   }
 };
@@ -25,17 +26,16 @@ export const getAllProperties = async () => {
 export const getProperty = async (id) => {
  
   try {
-    const response = await api.get(`/listing/${id}`, {
-      timeout: 10 * 1000,
-    });
+    const response = await api.get(`/listing/${id}`);
 
     if (response.status === 400 || response.status === 500) {
       throw response.data;
     }
-    console.log(response.data[0]);
-    return response.data[0];
+    console.log("********************");
+    //console.log(JSON.stringify(response.data[0].image));
+    return response.data.Item;
   } catch (error) {
-    toast.error("Something went wrong");
+    toast.error("Something went wrong in getting property");
     throw error;
   }
 };

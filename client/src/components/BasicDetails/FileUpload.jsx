@@ -10,6 +10,8 @@ import {
 import { useForm } from "@mantine/form";
 import { validateString } from "../../utils/common";
 import "./FileUpload.css";
+import axios from "axios";
+
 
 const FileUplaod = ({
   prevStep,
@@ -24,12 +26,19 @@ const FileUplaod = ({
   const [titleClearSelectedFile, setTitleClearSelectedFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
 
+  const [landRecordURL, setLandRecordURL] = useState(propertyDetails.landRecord);
+  const [landMapURL, setLandMapURL] = useState(propertyDetails.landMap);
+  const [titleDocURL, setTitleDocURL] = useState(propertyDetails.titleDoc);
+  const [titleClearURL, setTitleClearURL] = useState(propertyDetails.titleClear);
+  const [otherFileURL, setOtherFileURL] = useState(propertyDetails.otherFile);
+
+
   const { title, description, price } = form.values;
 
   const handleSubmit = () => {
     const { hasErrors } = form.validate();
     if (!hasErrors) {
-      setPropertyDetails((prev) => ({ ...prev, landRecordSelectedFile, landMapSelectedFile, titleDocSelectedFile, titleClearSelectedFile, selectedFile }));
+      setPropertyDetails((prev) => ({ ...prev, landRecord: landRecordURL, landMap: landMapURL, titleDoc: titleDocURL, titleClear: titleClearURL, otherFile:  otherFileURL}));
       nextStep();
     }
   };
@@ -52,8 +61,9 @@ const FileUplaod = ({
     }
   };
 
-  const onFileUpload = (id1)=> {
+  const onFileUpload = async (id1)=> {
         // Create an object of formData
+    const date = new Date();
     const formData = new FormData();
     if(id1 == 'land-record-upload'){
       // Update the formData object
@@ -64,6 +74,26 @@ const FileUplaod = ({
       );
       // Details of the uploaded file
       console.log(landRecordSelectedFile);
+      const fname = "doc" + date.getTime() + "_" + landRecordSelectedFile.name;
+      const url ="https://lksf2xxlv5.execute-api.ap-south-1.amazonaws.com/default/s3_uploadimages";
+      const imgurl = url + "?fname=" + fname;
+      //const [image_signed_url, setImage_signed_url] = useState(" ");
+      //const fetch_url =
+      const image_signed_url = await axios({
+        method: "GET",
+        url: imgurl,
+      });
+
+      console.log(image_signed_url);
+      await fetch(image_signed_url.data.uploadURL, {
+        method: "PUT",
+        body: landRecordSelectedFile,
+        headers: {
+          "Content-type": "application/binary",
+        },
+      });
+      setLandRecordURL("https://farmlandconnectimages.s3.ap-south-1.amazonaws.com/" + fname);
+
     }
     else if(id1 == 'land-map-upload'){
       // Update the formData object
@@ -74,6 +104,27 @@ const FileUplaod = ({
       );
       // Details of the uploaded file
       console.log(landMapSelectedFile);
+      const fname = "doc" + date.getTime() + "_" + landMapSelectedFile.name;
+      const url ="https://lksf2xxlv5.execute-api.ap-south-1.amazonaws.com/default/s3_uploadimages";
+      const imgurl = url + "?fname=" + fname;
+      //const [image_signed_url, setImage_signed_url] = useState(" ");
+      //const fetch_url =
+      const image_signed_url = await axios({
+        method: "GET",
+        url: imgurl,
+      });
+
+      console.log(image_signed_url);
+      await fetch(image_signed_url.data.uploadURL, {
+        method: "PUT",
+        body: landMapSelectedFile,
+        headers: {
+          "Content-type": "application/binary",
+        },
+      });
+      setLandMapURL("https://farmlandconnectimages.s3.ap-south-1.amazonaws.com/" + fname);
+
+
     }
     else if(id1 == 'title-doc-upload'){
       // Update the formData object
@@ -84,6 +135,25 @@ const FileUplaod = ({
       );
       // Details of the uploaded file
       console.log(titleDocSelectedFile);
+      const fname = "doc" + date.getTime() + "_" + titleDocSelectedFile.name;
+      const url ="https://lksf2xxlv5.execute-api.ap-south-1.amazonaws.com/default/s3_uploadimages";
+      const imgurl = url + "?fname=" + fname;
+      //const [image_signed_url, setImage_signed_url] = useState(" ");
+      //const fetch_url =
+      const image_signed_url = await axios({
+        method: "GET",
+        url: imgurl,
+      });
+
+      console.log(image_signed_url);
+      await fetch(image_signed_url.data.uploadURL, {
+        method: "PUT",
+        body: titleDocSelectedFile,
+        headers: {
+          "Content-type": "application/binary",
+        },
+      });
+      setTitleDocURL("https://farmlandconnectimages.s3.ap-south-1.amazonaws.com/" + fname);
     }
     else if(id1 == 'title-clear-upload'){
       // Update the formData object
@@ -94,6 +164,26 @@ const FileUplaod = ({
       );
       // Details of the uploaded file
       console.log(titleClearSelectedFile);
+      const fname = "doc" + date.getTime() + "_" + titleClearSelectedFile.name;
+      const url ="https://lksf2xxlv5.execute-api.ap-south-1.amazonaws.com/default/s3_uploadimages";
+      const imgurl = url + "?fname=" + fname;
+      //const [image_signed_url, setImage_signed_url] = useState(" ");
+      //const fetch_url =
+      const image_signed_url = await axios({
+        method: "GET",
+        url: imgurl,
+      });
+
+      console.log(image_signed_url);
+      await fetch(image_signed_url.data.uploadURL, {
+        method: "PUT",
+        body: titleClearSelectedFile,
+        headers: {
+          "Content-type": "application/binary",
+        },
+      });
+      setTitleClearURL("https://farmlandconnectimages.s3.ap-south-1.amazonaws.com/" + fname);
+
     }
     else {
       // Update the formData object
@@ -104,6 +194,25 @@ const FileUplaod = ({
       );
       // Details of the uploaded file
       console.log(selectedFile);
+      const fname = "doc" + date.getTime() + "_" + selectedFile.name;
+      const url ="https://lksf2xxlv5.execute-api.ap-south-1.amazonaws.com/default/s3_uploadimages";
+      const imgurl = url + "?fname=" + fname;
+      //const [image_signed_url, setImage_signed_url] = useState(" ");
+      //const fetch_url =
+      const image_signed_url = await axios({
+        method: "GET",
+        url: imgurl,
+      });
+
+      console.log(image_signed_url);
+      await fetch(image_signed_url.data.uploadURL, {
+        method: "PUT",
+        body: selectedFile,
+        headers: {
+          "Content-type": "application/binary",
+        },
+      });
+      setOtherFileURL("https://farmlandconnectimages.s3.ap-south-1.amazonaws.com/" + fname);
     }
   };
 

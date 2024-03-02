@@ -21,7 +21,7 @@ const PropertyCard = ({card}) => {
 
     >
       <Heart id={card?.id}/>
-      <img src={card.image} alt="home" />
+      <img src={card?.image} alt="home" />
       <span className="secondaryText r-price">
         <span style={{ color: "orange" }}>Rs.</span>
         <span>{card.price}</span>

@@ -58,11 +58,28 @@ useEffect(() => {
   async function fetchData() {
     const data = await getProperty(id);
     setItem(data);
+    // const url = 'https://ak8n1qfyf9.execute-api.ap-south-1.amazonaws.com/dev/listing/'+id.toString();
+
+    // fetch(url)
+    //     .then((res) => res.json())
+    //     .then((data1) => {
+
+    //       setItem(data1);
+    //       console.log("++++++data1+++",data1[0]);
+    //       //
+    //     })
+    //     .catch((err) => {
+    //       console.log(err.message);
+    //     });
+
   }
 
   fetchData();
+
+  
+
 }, [id]);
-  console.log('coordinates:',item);
+  console.log('coordinates_abcd:',item?.landRecord);
   const { isLoading, isError } = useState();
   const [modalOpened, setModalOpened] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
@@ -221,35 +238,35 @@ console.log('item',item);
                   <td style={{ padding: "8px" }}>1</td>
                   <td style={{ padding: "8px" }}>Land Record (7/12,8A)</td>
                   <td style={{ padding: "8px" }}>
-                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.landRecordSelectedFile, type: "image" })}>View Document</button>
+                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.landRecord, type: "application/binary" })}>Download Document</button>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ padding: "8px" }}>2</td>
                   <td style={{ padding: "8px" }}>Land Map</td>
                   <td style={{ padding: "8px" }}>
-                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.landMapSelectedFile, type: "image" })}>View Document</button>
+                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.landMap, type: "application/binary" })}>Download Document</button>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ padding: "8px" }}>3</td>
                   <td style={{ padding: "8px" }}>Title Document (Sale deed, Gift deed, Legal heir, Will)</td>
                   <td style={{ padding: "8px" }}>
-                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.titleDocSelectedFile, type: "image" })}>View Document</button>
+                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.titleDoc, type: "application/binary" })}>Download Document</button>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ padding: "8px" }}>4</td>
                   <td style={{ padding: "8px" }}>Title Clear Declarartion</td>
                   <td style={{ padding: "8px" }}>
-                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.titleClearSelectedFile, type: "image" })}>View Document</button>
+                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.titleClear, type: "application/binary" })}>Download Document</button>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ padding: "8px" }}>5</td>
                   <td style={{ padding: "8px" }}>Other Documents (Soil/Water Quality Report)</td>
                   <td style={{ padding: "8px" }}>
-                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.selectedFile, type: "image" })}>View Document</button>
+                    <button className="view-button" onClick={() => openDocumentModal({ src: item?.otherFile, type: "application/binary" })}>Download Document</button>
                   </td>
                 </tr>
               </tbody>
@@ -351,6 +368,7 @@ console.log('item',item);
       </div>
     );
   }
+  //console.log("image url",JSON.stringify(item));
 
   return (
     <div className="wrapper">

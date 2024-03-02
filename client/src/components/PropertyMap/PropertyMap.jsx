@@ -3,7 +3,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper, Polyline } from "google-maps
 import useProperties from "../../hooks/useProperties";
 
 const PropertyMap = ({ coordinates }) => {
-  //console.log("Coordinates:",coordinates);
+  console.log("Coordinates1234:",coordinates);
   const [path, setPath] = useState([]);
   const [showInfoWindow, setShowInfoWindow] = useState(false);
 
