@@ -405,7 +405,7 @@ console.log('item',item);
               {/* area */}
               <div className="flexStart facility">
                 <FaRuler size={20} color="#1F3E72" />
-                <span>{item?.area} bigah</span>
+                <span>{item?.area} Acre/s</span>
               </div>
 
 
