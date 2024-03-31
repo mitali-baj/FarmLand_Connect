@@ -1,3 +1,6 @@
+.hover{
+  cursor: pointer;
+}
 .property-container{
     gap: 2rem;
     position: relative;

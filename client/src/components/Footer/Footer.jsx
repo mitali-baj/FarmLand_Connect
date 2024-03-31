@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="flexCenter f-menu">
           
             <span><a href="/Properties">Listings</a></span>
-            <span><a href="/ChatBot">LegalAId</a></span>
+            {/* <span><a href="/ChatBot">LegalAId</a></span> */}
             <a href="mailto:mitali.baj154@nmims.edu.in">Contact Us</a>
           </div>
         </div>

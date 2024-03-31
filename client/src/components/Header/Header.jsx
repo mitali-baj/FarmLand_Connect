@@ -48,7 +48,7 @@ const Header = () => {
             <div onClick={handleAddPropertyClick}>Add FarmLand</div>
             <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} />
 
-            <NavLink to="/ChatBot">LegalAId</NavLink>
+            <NavLink to="/ChatBot">FAQ</NavLink>
 
             {/* login button */}
             {!isAuthenticated ? (

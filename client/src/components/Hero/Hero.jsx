@@ -18,7 +18,7 @@ const Hero = () => {
               type: "ease-in",
             }}
             >
-              FarmLand <br />Connect1 
+              FarmLand <br />Connect
               
               {/*<br /> */}
             </motion.h1>

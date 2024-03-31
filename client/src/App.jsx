@@ -29,10 +29,11 @@ function App() {
         <BrowserRouter>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-            <Route path="/ChatBot" element={<ChatBot />} />
               <Route element={<Layout />}>
-              
+
                 <Route path="/" element={<Website />} />
+                <Route path="/ChatBot" element={<ChatBot />} />
+
                 
                 <Route path="/properties">
                   <Route index element={<Properties />} />

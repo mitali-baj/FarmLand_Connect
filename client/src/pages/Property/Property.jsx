@@ -22,6 +22,7 @@ import { toast } from "react-toastify";
 import Heart from "../../components/Heart/Heart";
 
 
+
 const customStyles = {
   content: {
     top: "50%",
@@ -196,7 +197,7 @@ console.log('item',item);
                 <tr>
                   <td>{item?.nearby_locations}</td>
                   <td>{item?.area}</td>
-                  <td>{item?.price}</td>
+                  <td>{item?.price.toLocaleString()}</td>
                   <td>{item?.crops}</td>
                   <td>{item?.irrigation}</td>
                 </tr>
@@ -371,6 +372,13 @@ console.log('item',item);
     );
   }
   //console.log("image url",JSON.stringify(item));
+  let Guntha = 40*item?.area;
+  let Bigha = 1.62*item?.area;
+  let Sq_yard = 4840*item?.area;
+  let Katta = 60.51*item?.area;
+  let Biswa = 0.01*item?.area;
+  let hover_content = `${Guntha.toLocaleString()} Guntha \n${Bigha.toLocaleString()} Bigha \n${Sq_yard.toLocaleString()} Sq. yard \n${Katta.toLocaleString()} Katta \n${Biswa.toLocaleString()} Biswa`;
+
 
   return (
     <div className="wrapper">
@@ -399,11 +407,11 @@ console.log('item',item);
               {/* price */}
               <div className="flexStart facility">
                 <FaRupeeSign size={20} color="#1F3E72" />
-                <span>{item?.price}  </span>
+                <span>{item?.price.toLocaleString()}  </span>
               </div>
 
               {/* area */}
-              <div className="flexStart facility">
+              <div className="flexStart facility hover" title={hover_content}>
                 <FaRuler size={20} color="#1F3E72" />
                 <span>{item?.area} Acre/s</span>
               </div>
